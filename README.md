@@ -1,27 +1,6 @@
 # booking_system
 Restaurant booking system using AWS , S3 cloudfront , Amazon lightsail VPS amazon linux 2023 , Node js 
 
-#  Step 1: Check the API URL in script.js
-### Make sure the correct API endpoint is used in your script.js:
-```bash
-let response = await fetch("https://api.bluebengal-carshalton.co.uk/create-booking", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ name, email, phone, date, time, guests, status: "Pending" })
-});
-```
-### If unsure, replace with your Lightsail public IP:
-```bash
-let response = await fetch("http://13.43.107.188:5000/create-booking", { ... });
-
-```
-
-#  Step 2: Debug Using Browser Developer Tools
-### Open Developer Tools (F12 or Ctrl + Shift + I)
-### Go to the "Console" tab
-### Go to the "Network" tab → Click "Fetch/XHR" → Look for the failed request
-### Check the "Response" tab (If it says 500 Server Error, the backend has issues)
-
 # Backend Node.js-server.js
 ### Install Required Dependencies
 ```bash
@@ -153,4 +132,24 @@ pm2 restart booking-server
 
 
 
+#  Step 1: Check the API URL in script.js
+### Make sure the correct API endpoint is used in your script.js:
+```bash
+let response = await fetch("https://api.bluebengal-carshalton.co.uk/create-booking", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ name, email, phone, date, time, guests, status: "Pending" })
+});
+```
+### If unsure, replace with your Lightsail public IP:
+```bash
+let response = await fetch("http://13.43.107.188:5000/create-booking", { ... });
+
+```
+
+#  Step 2: Debug Using Browser Developer Tools
+### Open Developer Tools (F12 or Ctrl + Shift + I)
+### Go to the "Console" tab
+### Go to the "Network" tab → Click "Fetch/XHR" → Look for the failed request
+### Check the "Response" tab (If it says 500 Server Error, the backend has issues)
 
