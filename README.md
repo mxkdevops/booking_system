@@ -22,6 +22,19 @@ let response = await fetch("http://13.43.107.188:5000/create-booking", { ... });
 ### Go to the "Network" tab → Click "Fetch/XHR" → Look for the failed request
 ### Check the "Response" tab (If it says 500 Server Error, the backend has issues)
 
+# Backend Node.js-server.js
+### Install Required Dependencies
+```bash
+cd booking-server
+npm init -y
+npm install express nodemailer cors body-parser dotenv
+npm install -g pm2
+```
+#### verify the installation
+```bash
+pm2 -v
+```
+
 # Step 3: Check if Your Backend is Running
 ### Check if the server is running 
 ```bash
@@ -55,18 +68,7 @@ curl -X POST "https://api.bluebengal-carshalton.co.uk/create-booking" \
 # Install Local MongoDB (On VPS)
 ### To install MongoDB on AWS Lightsail (Amazon Linux 2023):
 
-# Backend Node.js-server.js
-### Install Required Dependencies
-```bash
-cd booking-server
-npm init -y
-npm install express nodemailer cors body-parser dotenv
-npm install -g pm2
-```
-#### verify the installation
-```bash
-pm2 -v
-```
+
   
 #### Create server.js
 ```bash
