@@ -96,6 +96,12 @@ sudo nginx -t
 nginx: configuration file /etc/nginx/nginx.conf test is successful
 
 ```
+### restat and check logs 
+```bash
+sudo systemctl restart nginx
+sudo journalctl -xeu nginx
+
+```
 
 # Backend Node.js-server.js
 ### Install Required Dependencies
