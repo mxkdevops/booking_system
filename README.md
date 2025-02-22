@@ -34,6 +34,11 @@ pm2 start server.js --name booking-server
 pm2 save
 pm2 restart booking-server
 ```
+### Set PM2 to restart on reboot 
+```bash
+pm2 save
+pm2 startup
+```
 ## Check for server log errors
 ```bash
 pm2 logs booking-server
