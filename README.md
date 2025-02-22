@@ -1,6 +1,25 @@
 # booking_system
 Restaurant booking system using AWS , S3 cloudfront , Amazon lightsail VPS amazon linux 2023 , Node js , NGinx 
 
+#### Find Out What’s Using Port 80
+```bash
+sudo lsof -i :80
+sudo netstat -tulnp | grep :80
+sudo ss -tulnp | grep :80
+```
+
+#### Kill the process using port 80
+If Nginx is already running, it might be stuck. Try stopping it:
+```bash
+sudo systemctl stop nginx
+```
+If the process does not stop, manually kill it:
+```bash
+sudo kill -9 PROCESS_ID
+```
+
+
+
 ### Use Nginx as a Reverse Proxy with SSL
 #### Install Nginx on AWS Lightsail.
 #### Set up SSL (Let's Encrypt) for HTTPS.
@@ -11,6 +30,9 @@ Restaurant booking system using AWS , S3 cloudfront , Amazon lightsail VPS amazo
 sudo dnf install -y nginx
 sudo systemctl enable nginx
 sudo systemctl start nginx
+sudo systemctl status nginx
+
+
 ```
 #### Configure Nginx Reverse Proxy
 ```bash
@@ -277,6 +299,10 @@ let response = await fetch("https://api.bluebengal-carshalton.co.uk/create-booki
 ```bash
 let response = await fetch("http://13.43.107.188:5000/create-booking", { ... });
 
+```
+#### Test Your Node.js API Through Nginx
+```bash
+curl http://YOUR_LIGHTSAIL_PUBLIC_IP/
 ```
 
 #  Step 2: Debug Using Browser Developer Tools
