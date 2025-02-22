@@ -14,6 +14,16 @@ npm install -g pm2
 pm2 -v
 ```
 
+#### Check if Node.js is installed on Lightsail
+```bash
+node -v
+npm -v
+```
+#### in not installed 
+```bash
+sudo dnf install -y nodejs npm
+```
+
 # Step 3: Check if Your Backend is Running
 ### Check if the server is running 
 ```bash
@@ -43,6 +53,21 @@ pm2 startup
 ```bash
 pm2 logs booking-server
 ```
+
+### Allow Traffic on Port 5000 (AWS Lightsail Firewall)
+```bash
+Steps to Allow Port 5000
+Go to AWS Lightsail Console → Networking
+Under Firewall rules, click "Add Rule"
+Select:
+Application: Custom
+Protocol: TCP
+Port range: 5000
+Source: Anywhere (0.0.0.0/0)
+Click Save
+
+```
+
 # Step 4: Test API Endpoint Manually
 ```bash
 curl -X POST "https://api.bluebengal-carshalton.co.uk/create-booking" \
