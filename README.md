@@ -87,6 +87,15 @@ server {
 }
 
 ```
+#### Test the Nginx Configuration
+```bash
+sudo nginx -t
+```
+#### If the test is successful,
+```bash
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+
+```
 
 # Backend Node.js-server.js
 ### Install Required Dependencies
