@@ -1,5 +1,92 @@
 # booking_system
-Restaurant booking system using AWS , S3 cloudfront , Amazon lightsail VPS amazon linux 2023 , Node js 
+Restaurant booking system using AWS , S3 cloudfront , Amazon lightsail VPS amazon linux 2023 , Node js , NGinx 
+
+### Use Nginx as a Reverse Proxy with SSL
+#### Install Nginx on AWS Lightsail.
+#### Set up SSL (Let's Encrypt) for HTTPS.
+#### Configure Nginx to proxy requests to your Node.js server.
+
+#### Install Nginx
+```bash
+sudo dnf install -y nginx
+sudo systemctl enable nginx
+sudo systemctl start nginx
+```
+#### Configure Nginx Reverse Proxy
+```bash
+sudo nano /etc/nginx/nginx.conf
+```
+#### Replace existing server block with:
+```bash
+server {
+    listen 80;
+    server_name YOUR_DOMAIN_OR_IP;
+
+    location / {
+        proxy_pass http://127.0.0.1:5000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+
+```
+
+#### Save and restart Nginx:
+```bash
+sudo systemctl restart nginx
+
+```
+#### Add HTTPS (Let's Encrypt SSL)
+#### To get a free SSL certificate, install Certbot:
+```bash
+sudo dnf install -y certbot python3-certbot-nginx
+```
+#### Then request an SSL certificate:
+```bash
+sudo certbot --nginx -d api.bluebengal-carshalton.co.uk
+```
+#### Restart Services
+```bash
+sudo systemctl restart nginx
+pm2 restart booking-server
+```
+
+ #### Update Frontend to Use HTTPS
+#### Modify your JavaScript fetch request (index.html):
+ ```bash
+let response = await fetch("https://bluebengal-carshalton.co.uk/send-booking-email", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(bookingData)
+});
+
+```
+
+#### Fix the Nginx Configuration
+```bash
+sudo nano /etc/nginx/nginx.conf
+```
+#### Look for the proxy_pass directive inside your server block.
+#### Fix: Add a / at the end of proxy_pass http://127.0.0.1:5000/;
+```bash
+server {
+    listen 80;
+    server_name YOUR_LIGHTSAIL_PUBLIC_IP;
+
+    location / {
+        proxy_pass http://127.0.0.1:5000/;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+
+```
 
 # Backend Node.js-server.js
 ### Install Required Dependencies
@@ -182,4 +269,3 @@ let response = await fetch("http://13.43.107.188:5000/create-booking", { ... });
 ### Go to the "Console" tab
 ### Go to the "Network" tab → Click "Fetch/XHR" → Look for the failed request
 ### Check the "Response" tab (If it says 500 Server Error, the backend has issues)
-
