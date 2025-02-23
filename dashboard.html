@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Dashboard</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar">
+    <h4 class="text-center">Admin Dashboard</h4>
+    <a href="#" onclick="fetchAllBookings()">📋 All Bookings</a>
+    <a href="#" onclick="filterToday()">📅 Today's Bookings</a>
+    <a href="#" onclick="filterUpcoming()">🔜 Upcoming Bookings</a>
+    <button class="btn btn-primary mb-3 w-100" onclick="showCreateBookingModal()">➕ Create Booking</button>
+</div>
+
+<!-- Main Content -->
+<div class="content">
+    <h2>📊 Booking Management</h2>
+
+    <!-- Booking Stats -->
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card text-white bg-primary">
+                <div class="card-body">
+                    <h5 class="card-title">Total Bookings</h5>
+                    <h2 id="totalBookings">0</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-white bg-success">
+                <div class="card-body">
+                    <h5 class="card-title">Today's Bookings</h5>
+                    <h2 id="todayBookings">0</h2>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-white bg-warning">
+                <div class="card-body">
+                    <h5 class="card-title">Upcoming Bookings</h5>
+                    <h2 id="upcomingBookings">0</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Search & Filter -->
+    <div class="mb-3">
+        <input type="text" id="searchBooking" class="form-control" placeholder="🔎 Search by Booking ID" onkeyup="searchBooking()">
+    </div>
+
+    <div class="mb-3 d-flex">
+        <button class="btn btn-info me-2" onclick="filterToday()">📅 Today's Bookings</button>
+        <button class="btn btn-warning me-2" onclick="filterTomorrow()">📆 Tomorrow's Bookings</button>
+        <input type="date" id="filterDate" class="form-control w-auto" onchange="fetchBookings()">
+    </div>
+
+    <!-- Bookings Table -->
+    <table class="table table-bordered table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>Booking ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Guests</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="bookingTable"></tbody>
+    </table>
+</div>
+
+<!-- Edit Booking Modal -->
+<div class="modal fade" id="editBookingModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit Booking</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="editBookingId">
+                <input type="text" id="editName" class="form-control mb-2" placeholder="Name">
+                <input type="date" id="editDate" class="form-control mb-2">
+                <input type="time" id="editTime" class="form-control mb-2">
+                <input type="number" id="editGuests" class="form-control mb-2" placeholder="Guests">
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button class="btn btn-primary" onclick="saveBookingChanges()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Create Booking Modal -->
+<div class="modal fade" id="createBookingModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Create Booking</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <input type="text" id="newName" class="form-control mb-2" placeholder="Name">
+                <input type="date" id="newDate" class="form-control mb-2">
+                <input type="time" id="newTime" class="form-control mb-2">
+                <input type="number" id="newGuests" class="form-control mb-2" placeholder="Guests">
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button class="btn btn-primary" onclick="createBooking()">Create</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="dashboard.js" defer></script>
+
+</body>
+</html>
