@@ -8,6 +8,17 @@ pm2 list
 pm2 restart booking-server
 pm2 logs booking-server --lines 50
 ```
+
+Action	HTTP Method	URL Format	Requires id?
+Get all bookings	GET	/get-bookings	❌ No
+Get one booking	GET	/get-booking/:id	✅ Yes
+Create a booking	POST	/create-booking	❌ No
+Update full booking	PUT	/update-booking/:id	✅ Yes
+Update status only	PATCH	/update-booking-status/:id	✅ Yes
+Delete booking	DELETE	/delete-booking/:id	✅ Y
+
+
+
 #### Test API 
 
 ```bash
