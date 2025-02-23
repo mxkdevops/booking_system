@@ -1,0 +1,283 @@
+
+  116  sudo dnf update -y
+  117  sudo dnf install -y nodejs npm
+  118  node -v
+  119  npm -v
+  120  mkdir booking-server && cd booking-server
+  121  npm init -y
+  122  npm install express nodemailer cors body-parser dotenv
+  123  nano server.js
+  124  nano .env
+  125  npm install express mongoose cors body-parser dotnv nodemailer
+  126  npm install express mongoose cors body-parser dotenv nodemailer
+  131  nano server.js
+  
+  134  sudo lsof -i :5000
+  135  sudo kill -9 2286675
+  136  pm2 restart booking-server
+  137  node server.js
+  138  pm2 list
+  139  pm2 restart booking-server
+  140  curl -X POST http://127.0.0.1:5000/send-booking-email -H "Content-Type: application/json" -d '{"name":"John Doe","email":"johndoe
+@example.com","phone":"123456789","date":"2024-02-21","time":"18:30","guests":"2"}'
+  147  nano .env
+  148  pm2 restart booking-server
+  149  npm install -g pm2
+  150  sudo npm install -g pm2
+  151  pm2 -v
+  152  pm2 restart booking-server
+  153  pm2 start server.js --name booking-server
+  154  pm2 save
+  155  pm2 startup
+  156  pm2 restart booking-server
+  157  pm2 -v
+  160  sudo dnf install -y nginx
+       sudo nano /etc/nginx/nginx.conf
+  161  server {
+  162      listen 80;
+  163      server_name YOUR_DOMAIN_OR_IP;
+  164      location / {
+  165          proxy_pass http://127.0.0.1:5000;
+  166          proxy_http_version 1.1;
+  167          proxy_set_header Upgrade $http_upgrade;
+  168          proxy_set_header Connection 'upgrade';
+  169          proxy_set_header Host $host;
+  170          proxy_cache_bypass $http_upgrade;
+  171      }
+  172  }
+  
+  174  sudo systemctl restart nginx
+  175  journalctl -xeu nginx.service
+  176  sudo nano /etc/nginx/nginx.conf
+  177  sudo systemctl restart nginx
+  178  
+  179  sudo systemctl restart nginx
+  180  journalctl -xeu nginx.service
+  181  sudo nginx -t
+  186  sudo nano /etc/nginx/nginx.conf
+  
+  201  sudo lsof -i :80
+  202  sudo systemctl stop httpd
+  203  sudo systemctl disable httpd
+  204  sudo systemctl status httpd
+  205  sudo systemctl restart nginx
+  206  sudo systemctl status nginx
+  207  sudo netstat -tulnp | grep :80
+  208  sudo systemctl enable nginx
+  209  sudo systemctl status booking-server
+  210  pm2 restart booking-server
+  211  sudo systemctl status booking-server
+  212  pm2 save
+  213  pm2 startup
+  214  pm2 list
+  215  pm2 restart booking-server
+  216  curl -X POST http://YOUR_LIGHTSAIL_PUBLIC_IP/send-booking-email -H "Content-Type: application/json" -d '{"name": "John", "email":
+ "john@example.com", "phone": "123456789", "date": "2024-02-21", "time": "18:00", "guests": "2"}'
+  217  pm2 restart booking-server
+  218  curl -X POST http://YOUR_LIGHTSAIL_PUBLIC_IP/send-booking-email -H "Content-Type: application/json" -d '{"name": "John", "email":
+ "john@example.com", "phone": "123456789", "date": "2024-02-21", "time": "18:00", "guests": "2"}'
+  219  curl http://checkip.amazonaws.com
+  220  curl -X POST http://13.43.107.188/send-booking-email -H "Content-Type: application/json" -d '{"name": "John", "email": "john@exam
+ple.com", "phone": "123456789", "date": "2024-02-21", "time": "18:00", "guests": "2"}'
+  221  pm2 restart booking-server
+  222  sudo systemctl status booking-server
+  223  pm2 restart booking-server
+  224  sudo systemctl status booking-server
+  225  pm2 save
+  226  pm2 startup
+  227  curl -X POST http://127.0.0.1:5000/send-booking-email -H "Content-Type: application/json" -d '{"name":"John Doe","email":"johndoe
+@example.com","phone":"123456789","date":"2024-02-21","time":"18:30","guests":"2"}'
+  228  sudo systemctl restart nginx
+  229  curl -X POST http://127.0.0.1:5000/send-booking-email -H "Content-Type: application/json" -d '{"name":"John Doe","email":"johndoe
+@example.com","phone":"123456789","date":"2024-02-21","time":"18:30","guests":"2"}'
+  230  pm2 logs booking-server
+  231  ls
+  232  nano server.js
+  233  nano .env
+  234  pm2 restart booking-server
+  235  curl -X POST http://127.0.0.1:5000/send-booking-email -H "Content-Type: application/json" -d '{"name":"John Doe","email":"johndoe
+@example.com","phone":"123456789","date":"2024-02-21","time":"18:30","guests":"2"}'
+  236  pm2 restart booking-server
+  237  pm2 logs booking-server
+  238  sudo dnf install -y mongodb mongodb-server
+  239  sudo dnf install -y mongodb
+  240  echo -e "[mongodb-org-7.0]\nname=MongoDB Repository\nbaseurl=https://repo.mongodb.org/yum/amazon/2023/mongodb-org/7.0/x86_64/\ngp
+gcheck=1\nenabled=1\ngpgkey=https://www.mongodb.org/static/pgp/server-7.0.asc" | sudo tee /etc/yum.repos.d/mongodb-org-7.0.repo
+  241  sudo dnf install -y mongodb-org
+  242  sudo systemctl start mongod
+  243  sudo systemctl enable mongod
+  244  sudo systemctl start mongod
+  245  sudo systemctl status mongod
+  246  mongosh
+  247  ls
+  248  cd booking-server
+  249  ls
+  250  rm server.js
+  251  nano server.js
+  252  node server.js
+  253  npm install -g pm2
+  254  pm2 start server.js --name booking-server
+  255  pm2 save
+  256  pm2 startup
+  257  sudo pm2 startup
+  258  pm2 start server.js --name booking-server
+  259  pm2 save
+  260  curl -X POST http://YOUR_LIGHTSAIL_IP:5000/create-booking -H "Content-Type: application/json" -d '{"name":"John","email":"john@ex
+ample.com","phone":"123456789","date":"2024-02-21","time":"18:30","guests":"2"}'
+  261  nano server.js
+  262  nano .env
+  263  pm2 restart booking-server
+  264  node server.js
+  265  npm install xlsx
+  266  pm2 restart booking-server
+  267  nano server.js
+  268  pm2 restart booking-server
+  269  node server.js
+  270  ls
+  271  cd booking-server
+  272  nano server.js
+  273  cd booking-server
+  274  nano server.js
+  275  pm2 restart booking-server
+  276  node server.js
+  277  nano server.js
+  278  pm2 restart booking-server
+  279  node server.js
+  280  nano server.js
+  281  pm2 restart booking-server
+  282  node server.js
+  283  nano server.js
+  284  pm2 restart booking-server
+  285  nano server.js
+  286  mongo
+  287  mongos
+  288  mongosh
+  289  sudo dnf install -y certbot python3-certbot-nginx
+  290  sudo certbot --nginx -d api.bluebengal-carshalton.co.uk
+  291  sudo ls /etc/letsencrypt/live/api.bluebengal-carshalton.co.uk/
+  292  ls /etc/nginx/sites-available/
+  293  sudo ls /etc/nginx/sites-available/
+  294  sudo nano /etc/nginx/nginx.conf
+  295  sudo systemctl restart nginx
+  296  journalctl -xeu nginx.service
+  297  sudo nano /etc/nginx/nginx.conf
+  298  sudo systemctl restart nginx
+  299  sudo systemctl status nginx
+  300  sudo nginx -t
+  301  sudo certbot install --cert-name api.bluebengal-carshalton.co.uk
+  302  nslookup api.bluebengal-carshalton.co.uk
+  303  mongosh
+  304  nano server.js
+  305  ls
+  306  cd booking-server
+  307  ls
+  308  nano server.js
+  309  nano -w server.js
+  310  pm2 restart booking-server
+  311  cd booking-server
+  312  mongosh
+  313  cd booking-server
+  314  ls
+  315  cp server.js server.js_copy
+  316  ls
+  317  cat server.js_copy
+  318  ls
+  319  history
+  320  cd booking-server
+  321  nano server.js
+  322  pm2 restart booking-server
+  323  cd booking-server
+  324  mongosh
+  325  cd booking-server
+  326  nano server.js
+  327  pm2 restart booking-server
+  328  pm2 list
+  329  pm2 -v
+  330  pm2 logs booking-server
+  331  mongosh
+  332  w
+  333  nginx -t
+  334  sudo nginx -t
+  335  ls
+  336  whoami
+  337  ls -la
+  338  ls
+  339  cd booking-server
+  340  ls
+  341  nano server.js
+  342  pm2 restart booking-server
+  343  sudo systemctl restart nginx
+  344  sudo systemctl status nginx
+  345  mongosh
+  346  pm2 list
+  347  pm2 logs booking-server
+  348  nano server.js
+  349  pm2 restart booking-server
+  350  pm2 logs booking-server
+  351  nano server.js
+  352  pm2 logs booking-server
+  353  nano server.js
+  354  pm2 restart booking-server
+  355  pm2 logs booking-server
+  356  curl -X GET "https://api.bluebengal-carshalton.co.uk/get-bookings?date=2025-02-21"
+  357  nano server.js
+  358  cd booking-server
+  359  nano server.js
+  360  pm2 restart booking-server
+  361  curl -X GET "https://api.bluebengal-carshalton.co.uk/get-bookings?date=2025-02-21"
+  362  pm2 logs booking-server
+  363  cd booking-server
+  364  curl -X GET "https://api.bluebengal-carshalton.co.uk/get-bookings?date=2025-02-21"
+  365  curl -X POST "https://api.bluebengal-carshalton.co.uk/update-booking-status" \
+  366  -H "Content-Type: application/json" \
+  367  -d '{"bookingId": "ENTER_BOOKING_ID_", "status": "Confirmed"}'
+  368  -d '{"bookingId": "P2Q27U", "status": "Confirmed"}'
+  369  curl -X POST "https://api.bluebengal-carshalton.co.uk/update-booking-status" \
+  370  -d '{"bookingId": "P2Q27U", "status": "Confirmed"}'
+  371  cat server.js
+  372  nano server.js
+  373  pm2 restart booking-server
+  374  pm2 list
+  375  cd booking-server
+  376  nano server.js
+  377  pm2 restart booking-server
+  378  curl -X GET "https://api.bluebengal-carshalton.co.uk/get-upcoming-bookings"
+  379  pm2 logs booking-server --lines 50
+  380  nano server.js
+  381  pm2 restart booking-server
+  382  curl -X GET "https://api.bluebengal-carshalton.co.uk/get-upcoming-bookings"
+  383  https://api.bluebengal-carshalton.co.uk/update-booking-status
+  384  curl -X GET "https://api.bluebengal-carshalton.co.uk/get-upcoming-bookings"
+  385  clear
+  386  nano server.js
+  387  pm2 restart booking-server
+  388  curl -X GET "https://api.bluebengal-carshalton.co.uk/get-upcoming-bookings"
+  389  https://api.bluebengal-carshalton.co.uk/update-booking-status
+  390  pm2 logs booking-server --lines 50
+  391  nano server.js
+  392  pm2 restart booking-server
+  393  pm2 logs booking-server --lines 50
+  394  nano server.js
+  395  pm2 restart booking-server
+  396  pm2 logs booking-server --lines 50
+  397  pm2 restart booking-server
+  398  pm2 logs booking-server
+  399  nano server.js
+  400  cd booking-server
+  401  nano server.js
+  402  cd booking-server
+  403  nano server.js
+  404  cat server.js new.text
+  405  cat server.js 
+  406  ls
+  407  cp server.js server_1447.js
+  408  cat server_1447.js
+  409  ls
+  410  rm server.js
+  411  nano server.js
+  412  pm2 restart booking-server
+  413  pm2 logs booking-server
+  414  nano server.js
+  415  pm2 restart booking-server
+  416  pm2 logs booking-server
+  417  cd booking-server
