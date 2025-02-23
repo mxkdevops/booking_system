@@ -310,3 +310,39 @@ curl http://YOUR_LIGHTSAIL_PUBLIC_IP/
 ### Go to the "Console" tab
 ### Go to the "Network" tab → Click "Fetch/XHR" → Look for the failed request
 ### Check the "Response" tab (If it says 500 Server Error, the backend has issues)
+
+
+#### server.js
+```bash
+  GNU nano 5.8                                                   server.js                                                              
+app.get("/get-all-bookings", async (req, res) => {
+
+try {
+
+let bookings = await Booking.find().sort({ date: 1, time: 1 });
+
+
+if (!bookings.length) {
+
+return res.json({ success: false, message: "No bookings found" });
+
+}
+
+
+res.json({ success: true, data: bookings });
+
+} catch (error) {
+
+console.error("Error fetching all bookings:", error);
+
+res.status(500).json({ success: false, message: "Server error" });
+
+}
+
+});
+
+
+
+
+
+```
