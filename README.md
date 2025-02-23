@@ -1,6 +1,22 @@
 # booking_system
 Restaurant booking system using AWS , S3 cloudfront , Amazon lightsail VPS amazon linux 2023 , Node js , NGinx 
 
+#### Check log file 
+
+```bash
+pm2 list
+pm2 restart booking-server
+pm2 logs booking-server --lines 50
+```
+#### Test API 
+
+```bash
+curl -X GET "https://api.bluebengal-carshalton.co.uk/get-upcoming-bookings"
+```
+
+
+
+
 #### Find Out What’s Using Port 80
 ```bash
 sudo lsof -i :80
