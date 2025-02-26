@@ -1,6 +1,30 @@
 # booking_system
 Restaurant booking system using AWS , S3 cloudfront , Amazon lightsail VPS amazon linux 2023 , Node js , NGinx 
 
+#### Enconter this error
+```bash
+
+pm2 restart booking-server
+Use --update-env to update environment variables
+[PM2][ERROR] Process or Namespace booking-server not found
+```
+#### Check if booking-server i running on PM2 
+```bash
+pm2 list
+
+```
+#### 2. If booking-server is Not Running, Start It Again
+Start server.js under PM2.
+Assign the process name booking-server.
+
+```bash
+pm2 start server.js --name booking-server
+```
+
+
+
+
+
 #### Find Out What’s Using Port 80
 ```bash
 sudo lsof -i :80
