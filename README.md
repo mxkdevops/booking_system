@@ -1,6 +1,17 @@
 # booking_system
 Restaurant booking system using AWS , S3 cloudfront , Amazon lightsail VPS amazon linux 2023 , Node js , NGinx 
 
+## ✅ Solution for PM2 Issues
+
+| **Issue** | **Solution** |
+|-----------|-------------|
+| **`booking-server` Not Found in PM2** | Run `pm2 list` to check if it's running |
+| **If Not Running** | Run `pm2 start server.js --name booking-server` |
+| **Restart `booking-server`** | Use `pm2 restart booking-server` |
+| **Ensure It Auto-Starts on Reboot** | Use `pm2 save` and `pm2 startup` |
+| **Check Logs for Errors** | Run `pm2 logs booking-server` |
+
+
 #### Enconter this error
 ```bash
 
@@ -13,12 +24,27 @@ Use --update-env to update environment variables
 pm2 list
 
 ```
-#### 2. If booking-server is Not Running, Start It Again
+####  If booking-server is Not Running, Start It Again
 Start server.js under PM2.
 Assign the process name booking-server.
 
 ```bash
 pm2 start server.js --name booking-server
+```
+### Restart booking-server Using PM2 
+if th eprocess is now listed , restart it with 
+```bash
+pm2 restart booking-server
+```
+#### Ensure PM2 running on system start up 
+
+```bash
+pm2 save
+pm2 startup
+```
+#### Check PM2 logs for error 
+```bash
+pm2 logs booking-server
 ```
 
 
