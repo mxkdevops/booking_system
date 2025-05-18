@@ -11,14 +11,13 @@ Click Connect using SSH (or use PuTTY if connecting via Windows)
 
 ## Install Node.js and Required Packages
 Run the following commands to install Node.js (if not installed) and set up the server:
-# Update system
-sudo apt update && sudo apt upgrade -y
+# Update the system
+sudo dnf update -y
 
-# Install Node.js (LTS version)
-curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
-sudo apt install -y nodejs
+# Enable Node.js 18 LTS (Amazon Linux provides this version)
+sudo dnf install -y nodejs npm
 
-# Verify installation
+# Verify Node.js and npm installation
 node -v
 npm -v
 
@@ -28,9 +27,77 @@ npm init -y
 npm install express nodemailer cors body-parser dotenv
 
 ## Create the Booking Email Server
-nside the booking-server directory, create a file server.js:
+inside the booking-server directory, create a file server.js:
 nano server.js
 Paste the following Node.js server code: Node.js
+https://github.com/mxkdevops/booking_system/blob/main/Node.js
+Save the file (CTRL + X, then Y, then ENTER).
+
+## Set Up Environment Variables (.env)
+Create a .env file to store email credentials securely:
+nano .env
+Paste the following and replace with your email credentials:
+EMAIL_USER=your-email@gmail.com
+EMAIL_PASS=your-email-password-or-app-password
+Save and exit (CTRL + X, then Y, then ENTER).
+
+### Run the Node.js Server
+Run the server using:
+node server.js
+If everything works, you should see:
+Server running on port 5000
+### Make the Server Run in the Background
+To keep it running even after closing SSH, use PM2 (process manager):
+# Install PM2
+npm install -g pm2
+
+# Start the server
+pm2 start server.js --name booking-server
+
+# Make it restart automatically on reboot
+pm2 save
+pm2 startup
+
+### Configure AWS Lightsail Firewall (Allow Port 5000)
+By default, Lightsail blocks custom ports. You must allow port 5000:
+
+Go to AWS Lightsail Console → Networking
+Under Firewall rules, click Add rule
+Select:
+Application: Custom
+Protocol: TCP
+Port range: 5000
+Source: Anywhere (0.0.0.0/0)
+Click Save
+Now your backend is accessible from the internet.
+
+### Update Frontend (index.html)
+Update script.js
+let response = await fetch("http://your-lightsail-public-ip:5000/send-booking-email", {
+
+###Test the Booking System
+Test the Booking System
+Open your website (hosted on S3 & CloudFront).
+Submit a booking request.
+The restaurant owner (info@bluebengal-carshalton.co.uk) should receive an email.
+If there’s an issue, check server logs using: pm2 logs booking-server
+
+✅ Solution: Use Nginx as a Reverse Proxy with SSL
+You need to:
+
+Install Nginx on AWS Lightsail.
+
+Set up SSL (Let's Encrypt) for HTTPS.
+
+Configure Nginx to proxy requests to your Node.js server.
+
+### Install Nginx
+sudo dnf install -y nginx
+sudo systemctl enable nginx
+sudo systemctl start nginx
+
+### Configure Nginx Reverse Proxy
+sudo nano /etc/nginx/nginx.conf
 
 
 ## ✅ Solution for PM2 Issues
