@@ -1,7 +1,36 @@
 # booking_system
 Restaurant booking system using AWS , S3 cloudfront , Amazon lightsail VPS amazon linux 2023 , Node js , NGinx 
 
+## Deploy Node.js Backend on AWS Lightsail
+Your Lightsail VPS acts as a server to send emails using Nodemailer.
 
+### Connect to Your AWS Lightsail VPS
+Go to AWS Lightsail Console → Instances
+Click on your VPS instance
+Click Connect using SSH (or use PuTTY if connecting via Windows)
+
+## Install Node.js and Required Packages
+Run the following commands to install Node.js (if not installed) and set up the server:
+# Update system
+sudo apt update && sudo apt upgrade -y
+
+# Install Node.js (LTS version)
+curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+sudo apt install -y nodejs
+
+# Verify installation
+node -v
+npm -v
+
+Now, create a project directory:
+mkdir booking-server && cd booking-server
+npm init -y
+npm install express nodemailer cors body-parser dotenv
+
+## Create the Booking Email Server
+nside the booking-server directory, create a file server.js:
+nano server.js
+Paste the following Node.js server code: Node.js
 
 
 ## ✅ Solution for PM2 Issues
